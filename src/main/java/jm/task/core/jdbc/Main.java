@@ -1,26 +1,23 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        UserDao userDao = new UserDaoJDBCImpl();
+    public static void main(String[] args) {
+        UserService user = new UserServiceImpl();
 
-        userDao.createUsersTable();
+        user.createUsersTable();
 
-        userDao.saveUser("Арсений", "Петрушков", (byte) 40);
-        userDao.saveUser("Афанасий", "Петров", (byte) 45);
-        userDao.saveUser("Гарельт", "из Ривии", (byte) 120);
-        userDao.saveUser("Эмгыр", "вар Эмрейс", (byte) 29);
+        user.saveUser("Арсений", "Петрушков", (byte) 40);
+        user.saveUser("Афанасий", "Петров", (byte) 45);
+        user.saveUser("Гарельт", "из Ривии", (byte) 120);
+        user.saveUser("Эмгыр", "вар Эмрейс", (byte) 29);
 
-        userDao.removeUserById(1);
-        System.out.println(userDao.getAllUsers().toString());
-        userDao.cleanUsersTable();
-        userDao.dropUsersTable();
+        user.removeUserById(1);
+        System.out.println(user.getAllUsers().toString());
+        user.cleanUsersTable();
+        user.dropUsersTable();
     }
 }

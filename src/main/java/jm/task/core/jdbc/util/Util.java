@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Util {
-    public Connection getConnection() {
+
+    public static Connection getConnection() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "kharek", "kharek");
